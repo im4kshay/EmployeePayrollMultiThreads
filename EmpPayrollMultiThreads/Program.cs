@@ -11,7 +11,7 @@ namespace EmpPayrollMultiThreads
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the Employee Payroll Using Multi Threads Program");
+            Console.WriteLine("=-=-=-=-=-Welcome to the Employee Payroll Using Multi Threads Program-=-=-=-=-=");
 
             List<Employee> employeeDetails = new List<Employee>();
             employeeDetails.Add(new Employee { EmployeeID = 1, EmployeeName = "Akshay" });
@@ -25,6 +25,13 @@ namespace EmpPayrollMultiThreads
             repo.AddEmployeeToPayroll(employeeDetails);
             stopWatch1.Stop();
             Console.WriteLine("Duration without multi thread: " + stopWatch1.ElapsedMilliseconds + " ms");
+
+            EmployeeRepository repo1 = new EmployeeRepository();
+            Stopwatch stopWatch2 = new Stopwatch();
+            stopWatch2.Start();
+            repo.AddEmployeeToPayroll(employeeDetails);
+            stopWatch2.Stop();
+            Console.WriteLine("Duration with multi thread: " + stopWatch2.ElapsedMilliseconds + " ms");
 
             Console.ReadLine();
         }
